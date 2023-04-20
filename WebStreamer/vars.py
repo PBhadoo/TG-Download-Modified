@@ -1,6 +1,7 @@
 # This file is a part of TG-FileStreamBot
 # Coding : Jyothis Jayanth [@EverythingSuckz]
 
+import sys
 from os import environ
 from dotenv import load_dotenv
 
@@ -20,6 +21,8 @@ class Var(object):
     BIN_CHANNEL_WITHOUT_MINUS = int(
         environ.get("BIN_CHANNEL_WITHOUT_MINUS", None)
     )  # you NEED to use a CHANNEL when you're using MULTI_CLIENT
+    UPDATES_CHANNEL = str(environ.get("UPDATES_CHANNEL", None))
+    BANNED_USERS = str(environ.get("BANNED_USERS", ""))
     PORT = int(environ.get("PORT", 8080))
     BIND_ADDRESS = str(environ.get("WEB_SERVER_BIND_ADDRESS", "0.0.0.0"))
     PING_INTERVAL = int(environ.get("PING_INTERVAL", "1200"))  # 20 minutes
@@ -43,3 +46,4 @@ class Var(object):
         URL = "http{}://{}{}/".format(
             "s" if HAS_SSL else "", FQDN, ""
         )
+    ALLOWED_USERS = [x.strip("@ ") for x in str(environ.get("ALLOWED_USERS", "") or "").split(",") if x.strip("@ ")]
