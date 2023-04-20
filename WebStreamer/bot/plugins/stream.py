@@ -30,7 +30,7 @@ async def media_receive_handler(_, m: Message):
     banned_users = Var.BANNED_USERS.split() if Var.BANNED_USERS else []
     if str(m.from_user.id) in banned_users:
         return await m.reply("You are banned from using this bot.", quote=True)
-    
+
     try:
         user = await _.get_chat_member(Var.UPDATES_CHANNEL, user_id=m.from_user.id)
     except UserNotParticipant:
@@ -57,7 +57,7 @@ async def media_receive_handler(_, m: Message):
         await m.reply_text(
             text="<code>{}</code>\n(<a href='{}'>shortened</a>)".format(
                 stream_link, short_link
-            ),
+        ),
             quote=True,
             parse_mode=ParseMode.HTML,
             reply_markup=rm,
