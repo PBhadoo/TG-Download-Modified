@@ -32,7 +32,7 @@ async def media_receive_handler(_, m: Message):
         return await m.reply("You are banned from using this bot.", quote=True)
 
     try:
-        user = await _.get_chat_member(Var.UPDATES_CHANNEL, user_id=m.from_user.id)
+        user = await _.get_chat_member(Var.UPDATES_CHANNEL_ID, user_id=m.from_user.id)
     except UserNotParticipant:
         return await m.reply(text="""<i>Join The Update Channel By Tapping The Join Now Button, To Use The Bot.</i>""",
                 reply_markup=InlineKeyboardMarkup(
